@@ -29,11 +29,11 @@ function dateClick() {
     // date filter field
     let dateInputField = d3.select("#datetime");
     let dateValue = dateInputField.property("value");
-    let filteredData = tableData.filter(date => date.datetime === dateValue);
-    if (filteredData.length === 0) {
+    let dateFilterData = tableData.filter(date => date.datetime === dateValue);
+    if (dateFilterData.length === 0) {
         buildtable(tableData)
     }
-        else buildtable(filteredData)
+        else buildtable(dateFilterData)
 }
 
 function cityClick() {
@@ -88,10 +88,30 @@ function shapeClick() {
       else buildtable(shapeFilterData)
 }
 
+// date, city, state, country, shape
+function multiFilter() {
+  if (dateFilterData.length === 0 && cityFilterData.length === 0 && stateFilterData.length === 0 && countryFilterData.length === 0) {
+    buildtable(shapeFilterData)
+  }
+    else if (dateFilterData.length === 0 && cityFilterData.length === 0 && stateFilterData.length === 0 && shapeFilterData.length === 0) {
+      buildtable(countryFilterData)
+    }
+      else if (dateFilterData.length === 0 && cityFilterData.length === 0 && countryFilterData.length === 0 && shapeFilterData.length === 0) {
+        buildtable(stateFilterData)
+      }
+        else if (dateFilterData.length === 0 && stateFilterData.length === 0 && countryFilterData.length === 0 && shapeFilterData.length === 0) {
+          buildtable(cityFilterData)
+        }
+          else (cityFilterData.length === 0 && stateFilterData.length === 0 && countryFilterData.length === 0 && shapeFilterData.length === 0)
+            buildtable(dateFilterData)
+}
+
+// filter buton configuration - need to update the 'dateClick' part
+button.on("click", dateClick);
+
+// reset button configuration
+button2.on("click", resetClick);
 function resetClick() {
   tbody.html("");
   buildtable(tableData)
 }
-
-button.on("click", countryClick);
-button2.on("click", resetClick);
