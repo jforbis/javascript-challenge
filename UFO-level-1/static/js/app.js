@@ -4,14 +4,14 @@ var tableData = data;
 // creating my table
 let tbody = d3.select("tbody");
 
-console.log(data);
+console.log(tableData);
 function buildtable() {
   data.forEach(function(siting) {
-    console.log(siting);
+    // console.log(siting);
     let row = tbody.append("tr");
     
     Object.entries(siting).forEach(function([key, value]) {
-        console.log(key, value);
+        // console.log(key, value);
         let cell = row.append("td");
         cell.text(value);
       });
@@ -29,7 +29,7 @@ function handleClick() {
     buildtable()
     console.log(inputValue);
 
-    let filteredData = tableData.filter(date => tableData.datetime === inputValue);
+    let filteredData = tableData.filter(date => date.datetime === inputValue);
 
     console.log(filteredData);
 }
