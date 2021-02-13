@@ -5,7 +5,7 @@ var tableData = data;
 let tbody = d3.select("tbody");
 
 console.log(data);
-
+function buildtable() {
   data.forEach(function(siting) {
     console.log(siting);
     let row = tbody.append("tr");
@@ -16,7 +16,14 @@ console.log(data);
         cell.text(value);
       });
   });
+}
 
-// listener
+// listener and function to run when the site's button is clicked
 let button = d3.select("#filter-btn");
 
+function handleClick() {
+    buildtable()
+    console.log("A button was clicked!");
+}
+
+button.on("click", handleClick);
