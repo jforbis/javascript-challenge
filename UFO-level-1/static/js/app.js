@@ -22,8 +22,12 @@ function buildtable() {
 let button = d3.select("#filter-btn");
 
 function handleClick() {
+    d3.event.preventDefault();
+    let inputField = d3.select("#datetime");
+    let inputValue = inputField.property("value");
+
     buildtable()
-    console.log("A button was clicked!");
+    console.log(inputValue);
 }
 
 button.on("click", handleClick);
