@@ -1,7 +1,7 @@
 // from data.js
 var tableData = data;
 
-// YOUR CODE HERE!
+// creating my table
 let tbody = d3.select("tbody");
 
 console.log(data);
@@ -16,3 +16,7 @@ console.log(data);
         cell.text(value);
       });
   });
+
+// listener
+let button = d3.select("#filter-btn");
+
