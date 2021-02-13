@@ -28,6 +28,10 @@ function handleClick() {
 
     buildtable()
     console.log(inputValue);
+
+    let filteredData = tableData.filter(date => tableData.datetime === inputValue);
+
+    console.log(filteredData);
 }
 
 button.on("click", handleClick);
