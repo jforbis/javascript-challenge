@@ -27,8 +27,8 @@ let button2 = d3.select("#reset-btn");
 
 function filterClick() {
     d3.event.preventDefault();
-
-    // filter fields
+    // tbody.html("");
+    // date filter field
     let dateInputField = d3.select("#datetime");
     let dateValue = dateInputField.property("value");
     let cityInput = d3.select("#city");
@@ -39,7 +39,8 @@ function filterClick() {
     let countryValue = countryInput.property("value");
     let shapeInput = d3.select("#shape");
     let shapeValue = shapeInput.property("value");
-
+    // let allFilters = tableData.filter(tableData => tableData.datetime === dateFilterData && tableData.city === cityFilterData && tableData.state === stateFilterData && tableData.country === countryFilterData && tableData.shape === shapeFilterData);
+    // console.log(allFilters)
     if(dateValue) {
       let dateFilterData = tableData.filter(date => date.datetime === dateValue);
       if(dateFilterData.length !== 0) {

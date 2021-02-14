@@ -27,8 +27,8 @@ let button2 = d3.select("#reset-btn");
 
 function filterClick() {
     d3.event.preventDefault();
-
-    // filter fields
+    // tbody.html("");
+    // date filter field
     let dateInputField = d3.select("#datetime");
     let dateValue = dateInputField.property("value");
     let cityInput = d3.select("#city");

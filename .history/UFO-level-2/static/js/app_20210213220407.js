@@ -5,20 +5,16 @@ let tableData = data;
 let tbody = d3.select("tbody");
 
 // console.log(tableData);
-let buildtable = (table) => {
+function buildtable(table) {
   tbody.html("");
-
   table.forEach(function(siting) {
     let row = tbody.append("tr");
-    
     Object.entries(siting).forEach(function([key, value]) {
-        // console.log(key, value);
         let cell = row.append("td");
         cell.text(value);
       });
   });
 }
-
 buildtable(tableData);
 
 // listener and function to run when the site's button is clicked
@@ -27,66 +23,45 @@ let button2 = d3.select("#reset-btn");
 
 function filterClick() {
     d3.event.preventDefault();
-
-    // filter fields
+    tbody.html("");
+    // date filter field
     let dateInputField = d3.select("#datetime");
     let dateValue = dateInputField.property("value");
+    let dateFilterData = tableData.filter(date => date.datetime === dateValue);
     let cityInput = d3.select("#city");
     let cityValue = cityInput.property("value");
+    let cityFilterData = tableData.filter(city => city.city === cityValue);
     let stateInput = d3.select("#state");
     let stateValue = stateInput.property("value");
+    let stateFilterData = tableData.filter(state => state.state === stateValue);
     let countryInput = d3.select("#country");
     let countryValue = countryInput.property("value");
+    let countryFilterData = tableData.filter(country => country.country === countryValue);
     let shapeInput = d3.select("#shape");
     let shapeValue = shapeInput.property("value");
+    let shapeFilterData = tableData.filter(shape => shape.shape === shapeValue);
+    let allFilters = tableData.filter(tableData => tableData.datetime === dateFilterData && tableData.city === cityFilterData && tableData.state === stateFilterData && tableData.country === countryFilterData && tableData.shape === shapeFilterData);
+    console.log(allFilters)
 
-    if(dateValue) {
-      let dateFilterData = tableData.filter(date => date.datetime === dateValue);
-      if(dateFilterData.length !== 0) {
-        buildtable(dateFilterData);
+    if(dateFilterData){
+      // 2. Filter the data
+      var tableData_Filtered = tableData.filter(tableData => tableData.datetime === searchedDate);
+    
+      // 3. Load the new data
+      if(tableData_Filtered.length !== 0) {
+        loadTableRows(tableData_Filtered);
       }
       else {
-        console.log("something is wrong with date filter")
+        // Clear out the previously loaded HTML:
+        tbody.html("");
+        
+        // Tell them "No rows match"
+        tbody.append("tr").append("td").text("You are unlucky - no sightings on this date");
       }
     }
-    else if(cityValue) {
-      let cityFilterData = tableData.filter(city => city.city === cityValue);
-      if(cityFilterData.length !== 0) {
-        buildtable(cityFilterData);
-      }
-      else {
-        console.log("something is wrong with city filter")
-      }
-    }
-    else if(stateValue) {
-      let stateFilterData = tableData.filter(state => state.state === stateValue);
-      if(stateFilterData.length !== 0) {
-        buildtable(stateFilterData);
-      }
-      else {
-        console.log("something is wrong with state filter")
-      }
-    }
-    else if(countryValue) {
-      let countryFilterData = tableData.filter(country => country.country === countryValue);
-      if(countryFilterData.length !== 0) {
-        buildtable(countryFilterData);
-      }
-      else {
-        console.log("something is wrong with country filter")
-      }
-    }
-    else (shapeValue)
-      let shapeFilterData = tableData.filter(shape => shape.shape === shapeValue);
-      if(shapeFilterData.length !== 0) {
-        buildtable(shapeFilterData);
-    }
-      else {
-        console.log("something is wrong with shape filter")
-      }
 }
 
-// filter buton configuration
+// filter buton configuration - need to update the 'dateClick' part
 button.on("click", filterClick);
 
 // reset button configuration
