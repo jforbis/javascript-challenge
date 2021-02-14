@@ -43,7 +43,7 @@ function filterClick() {
     if(dateValue) {
       let dateFilterData = tableData.filter(date => date.datetime === dateValue);
       if(dateFilterData.length !== 0) {
-        let datetable = buildtable(dateFilterData);
+        datetable = buildtable(dateFilterData);
         console.log(datetable)
       }
       else {
@@ -83,7 +83,7 @@ function filterClick() {
         buildtable(shapeFilterData);
     }
       else {
-        console.log("something is wrong with shape filter");
+        console.log("something is wrong with shape filter")
       }
 }
 
@@ -101,6 +101,3 @@ function resetClick() {
   document.getElementById("country").value = ""
   document.getElementById("shape").value = ""
 }
-
-// if datefiltertable.length && cityfiltertable.length is !==0, then take datefiltertable and filter it by city filter
-// include what to show where the table is if a search term/inquiry isn't found
