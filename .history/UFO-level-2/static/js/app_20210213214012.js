@@ -54,6 +54,49 @@ function filterClick() {
         }
 }
 
+// function cityClick() {
+//   d3.event.preventDefault();
+//   tbody.html("");
+//   // city filter field
+  
+//   if (cityFilterData.length === 0) {
+//     buildtable(tableData)
+//   }
+//       else buildtable(cityFilterData)
+// }
+
+// function stateClick() {
+//   d3.event.preventDefault();
+//   tbody.html("");
+//   // state filter field
+//   if (stateFilterData.length === 0) {
+//     buildtable(tableData)
+//   }
+//       else buildtable(stateFilterData)
+// }
+
+// function countryClick() {
+//   d3.event.preventDefault();
+//   tbody.html("");
+//   // country filter field
+//   if (countryFilterData.length === 0) {
+//     buildtable(tableData)
+//   }
+//       else buildtable(countryFilterData)
+// }
+
+// function shapeClick() {
+//   d3.event.preventDefault();
+//   tbody.html("");
+//   // shape filter field
+//   if (shapeFilterData.length === 0) {
+//     buildtable(tableData)
+//   }
+//       else buildtable(shapeFilterData)
+// }
+
+// date, city, state, country, shape
+
 // filter buton configuration - need to update the 'dateClick' part
 button.on("click", filterClick);
 

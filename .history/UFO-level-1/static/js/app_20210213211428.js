@@ -21,7 +21,6 @@ buildtable(tableData);
 
 // listener and function to run when the site's button is clicked
 let button = d3.select("#filter-btn");
-let button2 = d3.select("#reset-btn");
 
 function handleClick() {
     d3.event.preventDefault();

@@ -39,10 +39,4 @@ function handleClick() {
 
 button.on("click", handleClick);
 
-// reset button configuration
-button2.on("click", resetClick);
-function resetClick() {
-  tbody.html("");
-  buildtable(tableData)
-  document.getElementById("datetime").value = ""
-}
+// Filter based on: date, city, state, country, shape

@@ -1,5 +1,5 @@
 // from data.js
-var tableData = data;
+let tableData = data;
 
 // creating my table
 let tbody = d3.select("tbody");
@@ -37,12 +37,12 @@ function handleClick() {
         else buildtable(filteredData)
 }
 
-button.on("click", handleClick);
-
-// reset button configuration
-button2.on("click", resetClick);
 function resetClick() {
   tbody.html("");
   buildtable(tableData)
-  document.getElementById("datetime").value = ""
 }
+
+button.on("click", handleClick);
+button2.on("click", resetClick);
+
+// Filter based on: date, city, state, country, shape

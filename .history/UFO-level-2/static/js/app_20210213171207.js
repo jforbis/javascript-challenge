@@ -1,5 +1,5 @@
 // from data.js
-var tableData = data;
+let tableData = data;
 
 // creating my table
 let tbody = d3.select("tbody");
@@ -26,23 +26,27 @@ let button2 = d3.select("#reset-btn");
 function handleClick() {
     d3.event.preventDefault();
     tbody.html("");
-    let inputField = d3.select("#datetime");
-    let inputValue = inputField.property("value");
-    // console.log(inputValue);
-    let filteredData = tableData.filter(date => date.datetime === inputValue);
-    console.log(filteredData);
-    if (filteredData.length === 0) {
-        buildtable(tableData)
-    }
-        else buildtable(filteredData)
+    // date filter field
+    let dateInputField = d3.select("#datetime");
+    let dateValue = dateInputField.property("value");
+    let filteredData = tableData.filter(date => date.datetime === dateValue);
+    // if (filteredData.length === 0) {
+    //     buildtable(tableData)
+    // }
+    //     else buildtable(filteredData)
+    
+    // city filter field
+    let cityInput = d3.select("#city");
+    let cityValue = cityInput.property("value");
+    let cityFilter = tableData.filter(city => city.city === cityValue);
 }
 
-button.on("click", handleClick);
-
-// reset button configuration
-button2.on("click", resetClick);
 function resetClick() {
   tbody.html("");
   buildtable(tableData)
-  document.getElementById("datetime").value = ""
 }
+
+button.on("click", handleClick);
+button2.on("click", resetClick);
+
+// Filter based on: date, city, state, country, shape

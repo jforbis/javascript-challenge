@@ -23,7 +23,7 @@ buildtable(tableData);
 let button = d3.select("#filter-btn");
 let button2 = d3.select("#reset-btn");
 
-function filterClick() {
+function dateClick() {
     d3.event.preventDefault();
     tbody.html("");
     // date filter field
@@ -42,20 +42,57 @@ function filterClick() {
     let shapeInput = d3.select("#shape");
     let shapeValue = shapeInput.property("value");
     let shapeFilterData = tableData.filter(shape => shape.shape === shapeValue);
-    let allFilters = tableData.filter(tableData => tableData.datetime === dateFilterData && tableData.city === cityFilterData && tableData.state === stateFilterData && tableData.country === countryFilterData && tableData.shape === shapeFilterData);
-    if (allFilters.length !== 0) {
-        buildtable(allFilters)
-    }
-        else if (allFilters.length === 0 && ((dateFilterData.length !== 0 || cityFilterData.length !== 0 || stateFilterData.length !== 0 || countryFilterData.length !== 0 || shapeFilterData.length !== 0))) {
-          buildtable(dateFilterData) || buildtable(cityFilterData) || buildtable(stateFilterData) || buildtable(countryFilterData) || buildtable(shapeFilterData);
-        }
-        else {
-          console.log("Something is wrong...");
-        }
+        // if (dateFilterData.length === 0) {
+    //     buildtable(tableData)
+    // }
+    //     else buildtable(dateFilterData)
 }
 
+// function cityClick() {
+//   d3.event.preventDefault();
+//   tbody.html("");
+//   // city filter field
+  
+//   if (cityFilterData.length === 0) {
+//     buildtable(tableData)
+//   }
+//       else buildtable(cityFilterData)
+// }
+
+// function stateClick() {
+//   d3.event.preventDefault();
+//   tbody.html("");
+//   // state filter field
+//   if (stateFilterData.length === 0) {
+//     buildtable(tableData)
+//   }
+//       else buildtable(stateFilterData)
+// }
+
+// function countryClick() {
+//   d3.event.preventDefault();
+//   tbody.html("");
+//   // country filter field
+//   if (countryFilterData.length === 0) {
+//     buildtable(tableData)
+//   }
+//       else buildtable(countryFilterData)
+// }
+
+// function shapeClick() {
+//   d3.event.preventDefault();
+//   tbody.html("");
+//   // shape filter field
+//   if (shapeFilterData.length === 0) {
+//     buildtable(tableData)
+//   }
+//       else buildtable(shapeFilterData)
+// }
+
+// date, city, state, country, shape
+
 // filter buton configuration - need to update the 'dateClick' part
-button.on("click", filterClick);
+button.on("click", dateClick);
 
 // reset button configuration
 button2.on("click", resetClick);
@@ -63,8 +100,4 @@ function resetClick() {
   tbody.html("");
   buildtable(tableData)
   document.getElementById("datetime").value = ""
-  document.getElementById("city").value = ""
-  document.getElementById("state").value = ""
-  document.getElementById("country").value = ""
-  document.getElementById("shape").value = ""
 }
