@@ -46,6 +46,11 @@ function filterClick() {
     let filteredData = tableData.filter(values => values.datetime === filteredValues.date);
     filteredData = filteredData.filter(values => values.city === filteredValues.city);
     console.log(filteredData)
+
+    if(filteredData.length !== 0) {
+      buildtable(filteredData)
+    }
+
     if(dateValue) {
       let dateFilterData = tableData.filter(date => date.datetime === dateValue);
       if(dateFilterData.length === 0) {

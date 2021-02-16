@@ -41,56 +41,59 @@ function filterClick() {
     let shapeValue = shapeInput.property("value");
 
     let filteredValues = {date: dateValue, city: cityValue, state: stateValue, country: countryValue, shape: shapeValue};
-    console.log(filteredValues);
-    console.log(filteredValues.state)
+
     let filteredData = tableData.filter(values => values.datetime === filteredValues.date);
     filteredData = filteredData.filter(values => values.city === filteredValues.city);
-    console.log(filteredData)
-    if(dateValue) {
-      let dateFilterData = tableData.filter(date => date.datetime === dateValue);
-      if(dateFilterData.length === 0) {
-        let datetable = buildtable(dateFilterData);
-        console.log(datetable)
-      }
-      else {
-        console.log("something is wrong with date filter")
-      }
+
+    for (const [key, value] of Object.entries(filteredValues)) {
+      console.log(`${key}: ${value}`);
     }
-    else if(cityValue) {
-      let cityFilterData = tableData.filter(city => city.city === cityValue);
-      if(cityFilterData.length !== 0) {
-        buildtable(cityFilterData);
-      }
-      else {
-        console.log("something is wrong with city filter")
-      }
-    }
-    else if(stateValue) {
-      let stateFilterData = tableData.filter(state => state.state === stateValue);
-      if(stateFilterData.length !== 0) {
-        buildtable(stateFilterData);
-      }
-      else {
-        console.log("something is wrong with state filter")
-      }
-    }
-    else if(countryValue) {
-      let countryFilterData = tableData.filter(country => country.country === countryValue);
-      if(countryFilterData.length !== 0) {
-        buildtable(countryFilterData);
-      }
-      else {
-        console.log("something is wrong with country filter")
-      }
-    }
-    else (shapeValue)
-      let shapeFilterData = tableData.filter(shape => shape.shape === shapeValue);
-      if(shapeFilterData.length !== 0) {
-        buildtable(shapeFilterData);
-    }
-      else {
-        console.log("something is wrong with shape filter");
-      }
+
+    // if(dateValue) {
+    //   let dateFilterData = tableData.filter(date => date.datetime === dateValue);
+    //   if(dateFilterData.length === 0) {
+    //     let datetable = buildtable(dateFilterData);
+    //     console.log(datetable)
+    //   }
+    //   else {
+    //     console.log("something is wrong with date filter")
+    //   }
+    // }
+    // else if(cityValue) {
+    //   let cityFilterData = tableData.filter(city => city.city === cityValue);
+    //   if(cityFilterData.length !== 0) {
+    //     buildtable(cityFilterData);
+    //   }
+    //   else {
+    //     console.log("something is wrong with city filter")
+    //   }
+    // }
+    // else if(stateValue) {
+    //   let stateFilterData = tableData.filter(state => state.state === stateValue);
+    //   if(stateFilterData.length !== 0) {
+    //     buildtable(stateFilterData);
+    //   }
+    //   else {
+    //     console.log("something is wrong with state filter")
+    //   }
+    // }
+    // else if(countryValue) {
+    //   let countryFilterData = tableData.filter(country => country.country === countryValue);
+    //   if(countryFilterData.length !== 0) {
+    //     buildtable(countryFilterData);
+    //   }
+    //   else {
+    //     console.log("something is wrong with country filter")
+    //   }
+    // }
+    // else (shapeValue)
+    //   let shapeFilterData = tableData.filter(shape => shape.shape === shapeValue);
+    //   if(shapeFilterData.length !== 0) {
+    //     buildtable(shapeFilterData);
+    // }
+    //   else {
+    //     console.log("something is wrong with shape filter");
+    //   }
 }
 
 // filter buton configuration

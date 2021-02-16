@@ -44,8 +44,8 @@ function filterClick() {
     console.log(filteredValues);
     console.log(filteredValues.state)
     let filteredData = tableData.filter(values => values.datetime === filteredValues.date);
-    filteredData = filteredData.filter(values => values.city === filteredValues.city);
-    console.log(filteredData)
+
+    
     if(dateValue) {
       let dateFilterData = tableData.filter(date => date.datetime === dateValue);
       if(dateFilterData.length === 0) {
